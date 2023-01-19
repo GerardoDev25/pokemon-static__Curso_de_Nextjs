@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { Navbar } from '../ui';
 
 type Props = React.FC<{ children: React.ReactNode; title?: string }>;
 
@@ -11,8 +12,14 @@ export const Layout: Props = ({ children, title }) => {
         <meta name='description' content={`informacion sobre el pokemon ${title}`} />
         <meta name='keyworks' content={`${title} pokemon, pokedex`} />
       </Head>
-      {/*  */}
-      <main>{children}</main>
+      <Navbar />
+      <main
+        style={{
+          padding: '0 20px',
+        }}
+      >
+        {children}
+      </main>
     </>
   );
 };
