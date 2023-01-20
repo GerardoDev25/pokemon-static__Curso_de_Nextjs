@@ -11,8 +11,6 @@ interface Props {
 }
 
 const HomePage: NextPage<Props> = ({ pokemons }) => {
-  console.log(pokemons);
-
   return (
     <Layout title='Listado de Pokemon'>
       <Grid.Container gap={2} justify='flex-start'>
@@ -26,7 +24,6 @@ const HomePage: NextPage<Props> = ({ pokemons }) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { data } = await pokeApi.get<PoemonListResponse>('/pokemon?limit=151');
-  console.log(data);
 
   const urlImg =
     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/';
