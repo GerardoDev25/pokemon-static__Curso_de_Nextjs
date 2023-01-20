@@ -3,38 +3,40 @@ import { useRouter } from 'next/router';
 
 import { Layout } from '@/components/layout';
 import { pokeApi } from '@/api';
+import { Pokemon } from '@/interfaces';
 
 interface Props {
-  // pokemon: any;
-  id: number;
-  name: string;
+  pokemon: Pokemon;
 }
 
-const Pokemon: NextPage<Props> = ({ id, name }) => {
+const Pokemon: NextPage<Props> = ({ pokemon }) => {
   const router = useRouter();
+
+  console.log(pokemon);
 
   return (
     <Layout>
-      <h1></h1>
+      <h1>{pokemon.name}</h1>
     </Layout>
   );
 };
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
+  const pokemosIds = [...Array(151)].map((_, id) => `${id + 1}`);
+
   return {
-    paths: [
-      { params: { id: '1' } },
-      { params: { id: '2' } },
-      { params: { id: '3' } },
-      { params: { id: '4' } },
-    ],
+    paths: pokemosIds.map((id) => ({ params: { id } })),
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { id } = params as { id: string };
+
+  const { data } = await pokeApi.get<Pokemon>(`/pokemon/${id}`);
+
   return {
-    props: { id: 1, name: 'saaa' },
+    props: { pokemon: data },
   };
 };
 
