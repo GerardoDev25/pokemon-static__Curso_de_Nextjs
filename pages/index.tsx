@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const pokemons: SmallPokemon[] = data.results.map((pokemon, index) => ({
     ...pokemon,
-    id: index,
+    id: index + 1,
     img: `${urlImg}${index + 1}.svg`,
   }));
 
