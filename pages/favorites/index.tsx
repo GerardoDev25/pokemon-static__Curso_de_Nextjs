@@ -1,11 +1,20 @@
-import { Layout } from '@/components/layout';
+import { useEffect, useState } from 'react';
 
-// pages/404.tsx
-export default function Favorites() {
+import { getPokemons } from '@/utils';
+import { Layout } from '@/components/layout';
+import { NoFavorites } from '@/components/ui';
+
+export default function FavoritesPage() {
+  const [favoritesPokemos, setFavoritesPokemos] = useState<number[]>([]);
+
+  useEffect(() => {
+    setFavoritesPokemos(getPokemons());
+  }, []);
+
   return (
     <>
       <Layout title='Pokemons Favoritos'>
-        <h1>Hola mundo</h1>
+        <NoFavorites />
       </Layout>
     </>
   );

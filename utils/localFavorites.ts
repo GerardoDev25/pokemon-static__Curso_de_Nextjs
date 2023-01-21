@@ -1,5 +1,4 @@
 export const localFavorite = (id: number): void => {
-  console.warn('tootledfvdfvdfdfvdfvdfvdfvdfvdfvdfvdfv');
   let favorites: number[] = JSON.parse(localStorage.getItem('favorites') || '[]');
 
   favorites.includes(id)
@@ -15,4 +14,8 @@ export const existInFavorites = (id: number): boolean => {
   let favorites: number[] = JSON.parse(localStorage.getItem('favorites') || '[]');
 
   return favorites.includes(id);
+};
+
+export const getPokemons = (): number[] => {
+  return JSON.parse(localStorage.getItem('favorites') || '[]');
 };
