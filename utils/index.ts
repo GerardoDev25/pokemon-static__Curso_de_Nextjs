@@ -1,1 +1,1 @@
-export { localFavorite as toggleFavorite } from './localFavorites';
+export * from './localFavorites';

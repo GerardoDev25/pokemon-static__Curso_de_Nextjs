@@ -1,4 +1,4 @@
-export const localFavorite = (id: number) => {
+export const localFavorite = (id: number): void => {
   console.warn('tootledfvdfvdfdfvdfvdfvdfvdfvdfvdfvdfv');
   let favorites: number[] = JSON.parse(localStorage.getItem('favorites') || '[]');
 
@@ -7,4 +7,12 @@ export const localFavorite = (id: number) => {
     : favorites.push(id);
 
   localStorage.setItem('favorites', JSON.stringify(favorites));
+};
+
+export const existInFavorites = (id: number): boolean => {
+  if (typeof window == 'undefined') return false;
+
+  let favorites: number[] = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+  return favorites.includes(id);
 };
