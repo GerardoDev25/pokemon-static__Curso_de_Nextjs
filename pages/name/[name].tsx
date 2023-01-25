@@ -20,7 +20,7 @@ const PokemonByNamePage: NextPage<Props> = ({ pokemon }) => {
     localFavorite(pokemon.id);
     setIsInFavorite(!isInFavorite);
 
-    if (!isInFavorite) return;
+    if (isInFavorite) return;
 
     confeti({
       zIndex: 999,
