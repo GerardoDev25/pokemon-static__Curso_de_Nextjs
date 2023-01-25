@@ -13,7 +13,7 @@ export const PokemonCard: React.FC<Pokemon> = ({ pokemon }) => {
 
   const handleClick = () => {
     // router.push(`/pokemon/${pokemon.id}`);
-    router.push(`/name/${pokemon.name}`);
+    router.push(`/name/${pokemon.name.toLowerCase()}`);
   };
 
   return (
